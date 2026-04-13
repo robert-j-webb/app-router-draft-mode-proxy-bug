@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const draft = await draftMode();
   let params = undefined;
@@ -23,14 +23,3 @@ export default async function Home({
     </div>
   );
 }
-
-export const generateStaticParams = async () => {
-  return [
-    {
-      path: [],
-    },
-    {
-      path: ["test"],
-    },
-  ];
-};
